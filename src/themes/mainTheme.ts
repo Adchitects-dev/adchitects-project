@@ -1,8 +1,10 @@
 const color = {
-  primary: '#367EC0',
-  primaryDark: '#3C8CD5',
+  primary: '#DAC2F2',
+  secondary: '#5EDC4B',
   white: '#FFFFFF',
-  black: '#000000',
+  whiteSecondary: '#F1F0F0',
+  whiteTrietary: '#989898',
+  black: '#231E1E',
 };
 
 const size = {
@@ -12,18 +14,42 @@ const size = {
   m: 16,
   ml: 20,
   l: 24,
-}
+};
 
 const typography = {
+  textExtraSmall: {
+    fontFamily: 'inter-regular, sans-serif',
+    fontFamilyBold: 'inter-medium, sans-serif',
+    fontSize: 14,
+    lineHeight: 22,
+  },
   textSmall: {
-    fontFamily: 'montserrat-regular, sans-serif',
-    fontFamilyBold: 'montserrat-medium, sans-serif',
+    fontFamily: 'inter-regular, sans-serif',
+    fontFamilyBold: 'inter-medium, sans-serif',
     fontSize: 16,
-    lineHeight: 20,
+    lineHeight: 24,
+  },
+  textMedium: {
+    fontFamily: 'inter-regular, sans-serif',
+    fontFamilyBold: 'inter-medium, sans-serif',
+    fontSize: 24,
+    lineHeight: 40,
+  },
+  textBig: {
+    fontFamily: 'inter-regular, sans-serif',
+    fontFamilyBold: 'inter-medium, sans-serif',
+    fontSize: 40,
+    lineHeight: 56,
+  },
+  textExtraBig: {
+    fontFamily: 'inter-regular, sans-serif',
+    fontFamilyBold: 'inter-medium, sans-serif',
+    fontSize: 48,
+    lineHeight: 64,
   },
   button: {
-    fontFamily: 'montserrat-medium, sans-serif',
-    fontFamilyBold: 'montserrat-semibold, sans-serif',
+    fontFamily: 'inter-regular, sans-serif',
+    fontFamilyBold: 'inter-medium, sans-serif',
     fontSize: 18,
     lineHeight: 22,
   },
@@ -41,10 +67,10 @@ const mainTheme = {
       backgroundColor: color.primary,
       color: color.white,
       hover: {
-        backgroundColor: color.primaryDark,
+        backgroundColor: color.primary,
       },
       active: {
-        backgroundColor: color.primaryDark,
+        backgroundColor: color.primary,
       },
     },
   },

@@ -1,14 +1,14 @@
 @font-face {
-  font-family: 'montserrat-regular';
-  src: url('fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  font-family: 'inter-regular';
+  src: url('fonts/Inter/Inter-Regular.ttf') format('truetype');
   font-style: normal;
   font-weight: normal;
   text-rendering: optimizeLegibility;
 }
 
 @font-face {
-  font-family: 'montserrat-medium';
-  src: url('fonts/Montserrat/Montserrat-Medium.ttf') format('truetype');
+  font-family: 'inter-medium';
+  src: url('fonts/Inter/Inter-Medium.ttf') format('truetype');
   font-style: normal;
   font-weight: bold;
   text-rendering: optimizeLegibility;

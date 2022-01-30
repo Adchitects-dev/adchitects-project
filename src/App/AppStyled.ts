@@ -8,7 +8,7 @@ export default createGlobalStyle(
   }) => `
     html {
       font-size: 6.25%;
-      font-family: montserrat-regular, sans-serif;
+      font-family: inter-regular, sans-serif;
       body {
         margin: 0;
         padding: 0;
