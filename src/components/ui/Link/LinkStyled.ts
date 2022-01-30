@@ -4,10 +4,10 @@ import styled from 'styled-components';
 export default styled(Link)(
   ({
     theme: {
-      color: { black },
+      link: { color },
     },
   }) => `
-  color: ${black};
+  color: ${color};
   text-decoration: none;
   text-transform: capitalize;
 `,

@@ -12,12 +12,9 @@ export default styled.input<IInput>(
         padding,
         borderRadius,
         typography: { fontFamily, fontSize, lineHeight },
+        typographyError: { fontFamily: fontFamilyError, fontSize: fontSizeError, lineHeight: lineHeightError },
         backgroundColor,
         color,
-      },
-      color: { black },
-      typography: {
-        textExtraSmall: { fontFamily: fontFamilyError, fontSize: fontSizeError, lineHeight: lineHeightError },
       },
     },
     error,
@@ -32,7 +29,7 @@ export default styled.input<IInput>(
   color: ${color};
   outline: none;
   &::placeholder {
-    color: ${black};
+    color: ${color};
   }
   ${
     error

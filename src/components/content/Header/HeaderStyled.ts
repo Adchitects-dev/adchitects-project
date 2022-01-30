@@ -3,13 +3,13 @@ import styled from 'styled-components';
 export default styled.div(
   ({
     theme: {
-      size: { l: paddingVertical },
+      header: { padding },
     },
   }) => `
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${paddingVertical}px 64px;
+  padding: ${padding};
 `,
 );
 
@@ -19,10 +19,16 @@ export const NavWrapper = styled.nav`
   justify-content: space-between;
 `;
 
-export const LinksWrapper = styled.div`
+export const LinksWrapper = styled.div(
+  ({
+    theme: {
+      header: { linksMargin },
+    },
+  }) => `
   display: flex;
   align-items: center;
   justify-content: space-between;
   column-gap: 48px;
-  margin-left: 97px;
-`;
+  margin-left: ${linksMargin}px;
+`,
+);

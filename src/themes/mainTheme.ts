@@ -79,8 +79,16 @@ const mainTheme = {
     padding: `14px ${size.xl}px`,
     borderRadius: size.l,
     typography: typography.textSmall,
+    typographyError: typography.textExtraSmall,
     backgroundColor: color.whiteSecondary,
     color: color.black,
+  },
+  link: {
+    color: color.black,
+  },
+  header: {
+    padding: `${size.l}px 64px`,
+    linksMargin: 97,
   },
   mainView: {
     backgroundColor: color.white,
