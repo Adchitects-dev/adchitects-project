@@ -14,6 +14,7 @@ const size = {
   m: 16,
   ml: 20,
   l: 24,
+  xl: 32,
 };
 
 const typography = {
@@ -61,11 +62,11 @@ const mainTheme = {
   typography,
   button: {
     default: {
-      padding: `${size.sm}px ${size.m}px`,
-      borderRadius: `${size.s}px`,
-      typography: typography.button,
+      padding: `${size.sm}px 64px`,
+      borderRadius: `${size.l}px`,
+      typography: typography.textSmall,
       backgroundColor: color.primary,
-      color: color.white,
+      color: color.black,
       hover: {
         backgroundColor: color.primary,
       },
@@ -73,6 +74,13 @@ const mainTheme = {
         backgroundColor: color.primary,
       },
     },
+  },
+  input: {
+    padding: `14px ${size.xl}px`,
+    borderRadius: size.l,
+    typography: typography.textSmall,
+    backgroundColor: color.whiteSecondary,
+    color: color.black,
   },
   mainView: {
     backgroundColor: color.white,

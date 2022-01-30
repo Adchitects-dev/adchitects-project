@@ -20,11 +20,15 @@ export const Hero = styled.section(
   }) => `
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   column-gap: ${columnGapSize}px;
   padding: 128px 172px 152px;
 `,
 );
+
+export const HeroText = styled(Text)`
+  max-width: 516px;
+`;
 
 export const Testimonial = styled.section(
   ({
@@ -56,3 +60,15 @@ export const Quote = styled(Text)`
 export const Signature = styled(Text)`
   line-height: 29px;
 `;
+
+export const Form = styled.form(
+  ({
+    theme: {
+      size: { m: columnGapSize },
+    },
+  }) => `
+  display: flex;
+  column-gap: ${columnGapSize}px;
+  margin: 64px 0 48px;
+`,
+);

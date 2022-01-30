@@ -1,16 +1,45 @@
 import React, { useEffect, useState } from 'react';
-import { Image, Text } from '../../components';
-import MainViewStyled, { Hero, Testimonial, Newsletter, Quote, Signature } from './MainViewStyled';
-import http from '../../compositions';
-import { IPage, IPageData, TObject } from '../../types';
+import { Button, Image, Input, Text } from '../../components';
+import MainViewStyled, { Hero, HeroText, Testimonial, Newsletter, Quote, Signature, Form } from './MainViewStyled';
+import { ErrorPayload, IPage, IPageData, IPostData, TObject } from '../../types';
+import http from '../../compositions/http';
+import getInputValue from '../../compositions/input';
 
 export default function MainView(): JSX.Element {
   const [pages, setPages] = useState<IPage[]>();
   const [pageData, setPageData] = useState<IPageData>();
+  const [error, setError] = useState<string>('');
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const { currentTarget: formElement } = e;
+
+    const value = getInputValue(formElement, 'email');
+    const payload = {
+      email: value,
+    };
+
+    const onError = (err: ErrorPayload) => {
+      const { message } = err;
+      setError(message);
+    };
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    http<IPostData>({ url: '/newsletter', method: 'POST', payload, onError })
+      .then((data) => {
+        const { message } = data;
+        console.log(message);
+      })
+      .catch((err: ErrorPayload) => {
+        const { message } = err;
+        setError(message);
+      });
+  };
+
+  console.log(error);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    http<IPage[]>({ url: 'https://adchitects-cms.herokuapp.com/pages' }).then((data) => {
+    http<IPage[]>({ url: '/pages' }).then((data) => {
       setPages(data);
     });
   }, []);
@@ -19,7 +48,7 @@ export default function MainView(): JSX.Element {
     if (pages) {
       const { id } = pages.find(({ url }) => url === '/') as IPage;
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      http<IPageData>({ url: `https://adchitects-cms.herokuapp.com/page/${id}` }).then((data) => {
+      http<IPageData>({ url: `/page/${id}` }).then((data) => {
         setPageData(data);
       });
     }
@@ -42,9 +71,9 @@ export default function MainView(): JSX.Element {
   return (
     <MainViewStyled>
       <Hero>
-        <Text typography="textExtraBig" bold>
+        <HeroText typography="textExtraBig" bold>
           {heroText}
-        </Text>
+        </HeroText>
         <Image src={heroImg} width={516} height={384} />
       </Hero>
       <Testimonial>
@@ -57,8 +86,13 @@ export default function MainView(): JSX.Element {
         </Signature>
       </Testimonial>
       <Newsletter>
-        <Text typography="textBig">Sign up for Newsletter</Text>
-        {/* form and input */}
+        <Text typography="textBig" bold>
+          Sign up for Newsletter
+        </Text>
+        <Form onSubmit={handleSubmit}>
+          <Input name="email" type="email" placeholder="Type your email" error={error} />
+          <Button>Submit</Button>
+        </Form>
         <Text color="secondary" typography="textExtraSmall">
           Thank you for signing up for the Breally newsletter.
         </Text>
