@@ -1,2 +1,2 @@
-export * from './http';
-export * from './input';
+export { default as http } from './http';
+export { default as getInputValue } from './getInputValue';

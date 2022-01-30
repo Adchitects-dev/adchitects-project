@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Image, Input, Text } from '../../components';
+import { Button, Header, Image, Input, Text } from '../../components';
 import MainViewStyled, { Hero, HeroText, Testimonial, Newsletter, Quote, Signature, Form } from './MainViewStyled';
 import { ErrorPayload, IPage, IPageData, IPostData, TObject } from '../../types';
 import http from '../../compositions/http';
-import getInputValue from '../../compositions/input';
+import getInputValue from '../../compositions/getInputValue';
 
 export default function MainView(): JSX.Element {
   const [pages, setPages] = useState<IPage[]>();
@@ -35,8 +35,6 @@ export default function MainView(): JSX.Element {
       });
   };
 
-  console.log(error);
-
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     http<IPage[]>({ url: '/pages' }).then((data) => {
@@ -54,7 +52,7 @@ export default function MainView(): JSX.Element {
     }
   }, [pages]);
 
-  if (!pageData) {
+  if (!pages || !pageData) {
     return (
       <Text typography="textExtraBig" bold>
         Loading...
@@ -70,6 +68,7 @@ export default function MainView(): JSX.Element {
 
   return (
     <MainViewStyled>
+      <Header pages={pages} />
       <Hero>
         <HeroText typography="textExtraBig" bold>
           {heroText}
