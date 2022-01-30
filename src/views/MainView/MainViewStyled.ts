@@ -12,7 +12,7 @@ export default styled.div(
   `,
 );
 
-export const UpperSection = styled.section(
+export const Hero = styled.section(
   ({
     theme: {
       size: { l: columnGapSize },
@@ -26,7 +26,7 @@ export const UpperSection = styled.section(
 `,
 );
 
-export const MiddleSection = styled.section(
+export const Testimonial = styled.section(
   ({
     theme: {
       color: { black },
@@ -40,7 +40,7 @@ export const MiddleSection = styled.section(
 `,
 );
 
-export const LowerSection = styled.section`
+export const Newsletter = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
