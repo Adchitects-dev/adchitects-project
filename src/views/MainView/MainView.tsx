@@ -9,6 +9,7 @@ export default function MainView(): JSX.Element {
   const [pages, setPages] = useState<IPage[]>();
   const [pageData, setPageData] = useState<IPageData>();
   const [error, setError] = useState<string>('');
+  const [newsletterMessage, setNewsletterMessage] = useState<string>('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,15 +25,10 @@ export default function MainView(): JSX.Element {
       setError(message);
     };
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    http<IPostData>({ url: '/newsletter', method: 'POST', payload, onError })
-      .then((data) => {
-        const { message } = data;
-        console.log(message);
-      })
-      .catch((err: ErrorPayload) => {
-        const { message } = err;
-        setError(message);
-      });
+    http<IPostData>({ url: '/newsletter', method: 'POST', payload, onError }).then((data) => {
+      const { message } = data;
+      setNewsletterMessage(message);
+    });
   };
 
   useEffect(() => {
@@ -92,9 +88,11 @@ export default function MainView(): JSX.Element {
           <Input name="email" type="email" placeholder="Type your email" error={error} />
           <Button>Submit</Button>
         </Form>
-        <Text color="secondary" typography="textExtraSmall">
-          Thank you for signing up for the Breally newsletter.
-        </Text>
+        {newsletterMessage && (
+          <Text color="secondary" typography="textExtraSmall">
+            {newsletterMessage}
+          </Text>
+        )}
       </Newsletter>
     </MainViewStyled>
   );
