@@ -5,6 +5,7 @@ const BASE_URL = 'https://adchitects-cms.herokuapp.com';
 const http = <T = unknown>({ url, method = 'GET', payload, onError }: IHttp): Promise<T> => {
   const headers = new Headers();
   headers.set('Authorization', `Basic ${btoa('adchitects:jsrulezzz')}`);
+  headers.set('Content-Type', 'application/json');
 
   let body;
   try {
